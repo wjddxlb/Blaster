@@ -22,21 +22,9 @@ ABlasterCharacter::ABlasterCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	//CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
-	//CameraBoom->SetupAttachment(GetMesh());
-	//CameraBoom->TargetArmLength = 600.f;
-	//CameraBoom->bUsePawnControlRotation = true;
-
-	//FirstPersonCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
-	//FirstPersonCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
-	//FirstPersonCamera->bUsePawnControlRotation = false;
-
 	FirstPersonCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	FirstPersonCamera->SetupAttachment(GetCapsuleComponent());
 	FirstPersonCamera->bUsePawnControlRotation = true;
-
-	//bUseControllerRotationYaw = false;
-	//GetCharacterMovement()->bOrientRotationToMovement = true;
 
 	bUseControllerRotationYaw = true;
 	GetCharacterMovement()->bOrientRotationToMovement = false;
@@ -181,20 +169,6 @@ void ABlasterCharacter::BeginPlay()
 void ABlasterCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	//if (GetLocalRole() > ENetRole::ROLE_SimulatedProxy && IsLocallyControlled())
-	//{
-	//	AimOffset(DeltaTime);
-	//}
-	//else
-	//{
-	//	TimeSinceLastMovementReplication += DeltaTime;
-	//	if (TimeSinceLastMovementReplication > 0.25f)
-	//	{
-	//		OnRep_ReplicatedMovement();
-	//	}
-	//	CalculateAO_Pitch();
-	//}
 
 	HideCameraIfCharacterClose();
 	PollInit();
@@ -502,22 +476,7 @@ void ABlasterCharacter::TurnInPlace(float DeltaTime)
 void ABlasterCharacter::HideCameraIfCharacterClose()
 {
 	if (!IsLocallyControlled()) return;
-	//if ((FollowCamera->GetComponentLocation() - GetActorLocation()).Size() < CameraThreshold)
-	//{
-	//	GetMesh()->SetVisibility(false);
-	//	if (Combat && Combat->EquippedWeapon && Combat->EquippedWeapon->GetWeaponMesh())
-	//	{
-	//		Combat->EquippedWeapon->GetWeaponMesh()->bOwnerNoSee = true;
-	//	}
-	//}
-	//else
-	//{
-	//	GetMesh()->SetVisibility(true);
-	//	if (Combat && Combat->EquippedWeapon && Combat->EquippedWeapon->GetWeaponMesh())
-	//	{
-	//		Combat->EquippedWeapon->GetWeaponMesh()->bOwnerNoSee = false;
-	//	}
-	//}
+	
 	if ((FirstPersonCamera->GetComponentLocation() - GetActorLocation()).Size() < CameraThreshold)
 	{
 		GetMesh()->SetVisibility(false);

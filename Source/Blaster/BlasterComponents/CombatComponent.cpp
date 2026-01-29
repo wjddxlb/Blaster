@@ -141,22 +141,6 @@ void UCombatComponent::OnRep_EquippedWeapon()
 	if (EquippedWeapon && Character)
 	{
 		EquippedWeapon->SetWeaponState(EWeaponState::EWS_Equipped);
-		//if (Character->GetController() && Character->GetController()->IsLocalPlayerController())
-		//{
-		//	const USkeletalMeshSocket* ArmsHandSocket = Character->GetArmsMesh()->GetSocketByName(FName("RightHandSocket"));
-		//	if (ArmsHandSocket)
-		//	{
-		//		ArmsHandSocket->AttachActor(EquippedWeapon, Character->GetArmsMesh());
-		//	}
-		//}
-		//else
-		//{
-		//	const USkeletalMeshSocket* HandSocket = Character->GetMesh()->GetSocketByName(FName("RightHandSocket"));
-		//	if (HandSocket)
-		//	{
-		//		HandSocket->AttachActor(EquippedWeapon, Character->GetMesh());
-		//	}
-		//}
 		const USkeletalMeshSocket* ArmsHandSocket = Character->GetArmsMesh()->GetSocketByName(FName("RightHandSocket"));
 		if (ArmsHandSocket)
 		{
@@ -188,16 +172,6 @@ void UCombatComponent::TraceUnderCrosshairs(FHitResult& TraceHitResult)
 	if (bScreenToWorld)
 	{
 		FVector Start = CrosshairWorldPosition;
-
-		//FVector Start = Character->GetFirstPersonCamera()->GetComponentLocation();
-		//FVector Direction = Character->GetFirstPersonCamera()->GetForwardVector();
-		//FVector End = Start + (Direction * TRACE_LENGTH);
-
-		//if (Character)
-		//{
-		//	float DistanceToCharacter = (Character->GetActorLocation() - Start).Size();
-		//	Start += CrosshairWorldDirection * (DistanceToCharacter + 100.f);
-		//}
 
 		FVector End = Start + CrosshairWorldDirection * TRACE_LENGTH;
 

@@ -52,12 +52,6 @@ protected:
 	void PollInit();
 
 private:
-	//UPROPERTY(VisibleAnyWhere, Category = Camera)
-	//class USpringArmComponent* CameraBoom;
-
-	//UPROPERTY(VisibleAnyWhere, Category = Camera)
-	//class UCameraComponent* FollowCamera;
-
 	UPROPERTY(VisibleAnyWhere, Category = Camera)
 	class UCameraComponent* FirstPersonCamera;
 
@@ -182,7 +176,6 @@ public:
 	AWeapon* GetEquippedWeapon();
 	FORCEINLINE ETurningInPlace GetTurningInPlace() const { return TurningInPlace; }
 	FVector GetHitTarget() const;
-	//FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 	FORCEINLINE UCameraComponent* GetFirstPersonCamera() const { return FirstPersonCamera; }
 	FORCEINLINE USkeletalMeshComponent* GetArmsMesh() const { return ArmsMesh; }
 	FORCEINLINE bool ShouldRotateRootBone() const { return bRotateRootBone; }
